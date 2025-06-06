@@ -1,5 +1,6 @@
 import cmd
 
+from DirectoryManager import DirectoryManager
 from DirectoryStructure import DirectoryStructure
 
 
@@ -7,14 +8,17 @@ class MyCLI(cmd.Cmd):
     prompt = '>> '
     intro = 'Welcome to MyCLI. Type "help" for available commands.'
 
+    def __init__(self):
+        super().__init__()
+        self.structure = DirectoryStructure()
+        self.manager = DirectoryManager(self.structure)
+
     def do_check(self, line):
         """Checks directory structure."""
         print("Hello, World!")
 
     def do_str(self, line):
-        structure = DirectoryStructure.get_structure()
-        for d in structure["subdirectories"]:
-            print(d)
+        self.manager.check_directories()
 
     def do_q(self, line):
         """Exit the CLI."""
