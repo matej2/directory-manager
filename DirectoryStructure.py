@@ -30,7 +30,7 @@ class DirectoryStructure:
                             "subdirectories": []
                         },
                         {
-                            "name": "dtos",
+                            "name": "dto",
                             "description": "Data transfer objects",
                             "subdirectories": []
                         },
@@ -70,7 +70,7 @@ class DirectoryStructure:
                             "subdirectories": []
                         },
                         {
-                            "name": "app.ts|js",
+                            "name": "main",
                             "description": "Application entry point",
                             "subdirectories": []
                         }
@@ -83,6 +83,11 @@ class DirectoryStructure:
                         {
                             "name": "unit",
                             "description": "Unit tests",
+                            "subdirectories": []
+                        },
+                        {
+                            "name": "regression",
+                            "description": "Regression tests",
                             "subdirectories": []
                         },
                         {
@@ -100,7 +105,13 @@ class DirectoryStructure:
                 {
                     "name": "migrations",
                     "description": "Database migration files",
-                    "subdirectories": []
+                    "subdirectories": [
+                        {
+                            "name": "staging",
+                            "description": "Migration files for staging environment",
+                            "subdirectories": []
+                        },
+                    ]
                 },
                 {
                     "name": "seeders",
@@ -110,26 +121,27 @@ class DirectoryStructure:
                 {
                     "name": "scripts",
                     "description": "Deployment and maintenance scripts",
-                    "subdirectories": []
-                },
-                {
-                    "name": ".env",
-                    "description": "Environment variables file",
-                    "subdirectories": []
+                    "subdirectories": [
+                        {
+                            "name": "Deploy",
+                            "description": "Deploy scripts for each environment.",
+                            "subdirectories": []
+                        },
+                        {
+                            "name": "Tests",
+                            "description": "Test scripts for each environment.",
+                            "subdirectories": []
+                        },
+                        {
+                            "name": "Build",
+                            "description": "Build scripts for each environment.",
+                            "subdirectories": []
+                        }
+                    ]
                 },
                 {
                     "name": ".env.example",
                     "description": "Environment variables template",
-                    "subdirectories": []
-                },
-                {
-                    "name": "package.json",
-                    "description": "Project metadata and dependencies",
-                    "subdirectories": []
-                },
-                {
-                    "name": "tsconfig.json",
-                    "description": "TypeScript configuration",
                     "subdirectories": []
                 },
                 {
