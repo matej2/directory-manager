@@ -33,19 +33,6 @@ class DirectoryStructure:
                             "name": "💰 Financial",
                             "type": "directory",
                             "description": "Taxes, invoices, receipts",
-                            "subdirectories": [
-                                {
-                                    "name": "📄 tax_2023.pdf",
-                                    "type": "file",
-                                    "description": "Annual tax documents",
-                                    "subdirectories": []
-                                }
-                            ]
-                        },
-                        {
-                            "name": "📝 Templates",
-                            "type": "directory",
-                            "description": "Document templates",
                             "subdirectories": []
                         }
                     ]
@@ -76,12 +63,6 @@ class DirectoryStructure:
                                     "name": "🎉 Events",
                                     "type": "directory",
                                     "description": "Special occasions",
-                                    "subdirectories": []
-                                },
-                                {
-                                    "name": "🗂 Sorted",
-                                    "type": "directory",
-                                    "description": "Organized by date (YYYY-MM-DD)",
                                     "subdirectories": []
                                 }
                             ]
@@ -115,26 +96,7 @@ class DirectoryStructure:
                             "name": "🎵 Music",
                             "type": "directory",
                             "description": "Audio files",
-                            "subdirectories": [
-                                {
-                                    "name": "💿 Albums",
-                                    "type": "directory",
-                                    "description": "Organized by artist/album",
-                                    "subdirectories": []
-                                },
-                                {
-                                    "name": "🎧 Playlists",
-                                    "type": "directory",
-                                    "description": "Custom playlists",
-                                    "subdirectories": []
-                                },
-                                {
-                                    "name": "🎶 favorite_song.mp3",
-                                    "type": "file",
-                                    "description": "Music files",
-                                    "subdirectories": []
-                                }
-                            ]
+                            "subdirectories": []
                         }
                     ]
                 },
