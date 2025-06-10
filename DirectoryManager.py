@@ -1,4 +1,5 @@
 import os
+from typing import LiteralString
 
 from DirectoryStructure import DirectoryStructure
 
@@ -15,34 +16,32 @@ class DirectoryManager:
         return f
 
     def check_directories(self):
-        dir_list = self.get_directories()
         structure = self.structure.get_structure().get("subdirectories")
 
-        self.check_subdirectories(dir_list, structure, 0)
+        self.check_subdirectories(structure, 0)
 
     def create_directories(self):
-        dir_list = self.get_directories()
         structure = self.structure.get_structure().get("subdirectories")
 
-        self.create_subdirectories(structure, )
+        self.create_subdirectories(structure, os.getcwd())
 
 
-    def create_subdirectories(self, dir_structure: dict, current_dir: str):
+    def create_subdirectories(self, dir_structure: dict, current_dir: LiteralString | str | bytes):
         for directory in dir_structure:
             dir_name = directory.get("name")
             dir_subdir = directory.get("subdirectories")
             dir_type = directory.get("type")
 
             if dir_type == "directory":
-                curr_path = os.path.join(current_dir, dir_name)
-                os.mkdir(curr_path)
+                current_dir = os.path.join(str(current_dir), dir_name)
+                os.mkdir(current_dir)
 
 
             if len(dir_subdir) > 0:
-                self.create_subdirectories(dir_subdir, curr_path)
+                self.create_subdirectories(dir_subdir, current_dir)
 
 
-    def check_subdirectories(self, dir_list: list[str], dir_structure: dict, level: int):
+    def check_subdirectories(self, dir_structure: dict, level: int):
         for directory in dir_structure:
             dir_name = directory.get("name")
             dir_desc = directory.get("description")
@@ -54,11 +53,11 @@ class DirectoryManager:
                 dir_level += "│   "
                 i += 1
 
-            if dir_name in dir_list:
+            if dir_name in self.get_directories():
                 print(f'[+] {dir_level}├── {dir_name}:'.ljust(40) + dir_desc)
             else:
                 print(f'[-] {dir_level}├── {dir_name}:'.ljust(40) + dir_desc)
 
             if len(dir_subdir) > 0:
-                self.check_subdirectories(dir_list, dir_subdir, (level+1))
+                self.check_subdirectories(dir_subdir, (level+1))
 
