@@ -32,9 +32,9 @@ class DirectoryManager:
                 i += 1
 
             if dir_name in dir_list:
-                print(f'[+] {dir_level}├── {dir_name}: {dir_desc}')
+                print(f'[+] {dir_level}├── {dir_name}:'.ljust(40) + dir_desc)
             else:
-                print(f'[-] {dir_level}├── {dir_name}: {dir_desc}')
+                print(f'[-] {dir_level}├── {dir_name}:'.ljust(40) + dir_desc)
 
             if len(dir_subdir) > 0:
                 self.check_subdirectories(dir_list, dir_subdir, (level+1))
