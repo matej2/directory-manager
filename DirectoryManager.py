@@ -28,13 +28,13 @@ class DirectoryManager:
 
             i = 0
             while i < level:
-                dir_level += ". "
+                dir_level += "│   "
                 i += 1
 
             if dir_name in dir_list:
-                print(f'[+] {dir_level} {dir_name}: {dir_desc}')
+                print(f'[+] {dir_level}├── {dir_name}: {dir_desc}')
             else:
-                print(f'[-] {dir_level} {dir_name}: {dir_desc}')
+                print(f'[-] {dir_level}├── {dir_name}: {dir_desc}')
 
             if len(dir_subdir) > 0:
                 self.check_subdirectories(dir_list, dir_subdir, (level+1))
