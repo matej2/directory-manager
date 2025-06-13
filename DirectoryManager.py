@@ -26,6 +26,8 @@ class DirectoryManager:
 
         self.create_subdirectories(structure, os.getcwd())
 
+    def get_subdirectory_path(self, dir):
+        os.path.relpath(dir, self.path)
 
     def create_subdirectories(self, dir_structure: dict, current_dir: LiteralString | str | bytes):
         for directory in dir_structure:
@@ -42,12 +44,6 @@ class DirectoryManager:
                 self.create_subdirectories(dir_subdir, current_dir)
 
 
-    def does_exist(self, dir_name):
-        if dir_name in self.get_directories():
-            return True
-        else:
-            return False
-
     def check_subdirectories(self, dir_structure: dict, level: int):
         for directory in dir_structure:
             dir_name = directory.get("name")
@@ -60,7 +56,7 @@ class DirectoryManager:
                 dir_level += "│   "
                 i += 1
 
-            if self.does_exist(dir_name):
+            if self.structure.does_exist(dir_name):
                 print(f'[+] {dir_level}├── {dir_name}:'.ljust(40) + dir_desc)
             else:
                 print(f'[-] {dir_level}├── {dir_name}:'.ljust(40) + dir_desc)

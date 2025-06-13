@@ -1,6 +1,6 @@
 class DirectoryStructure:
     @staticmethod
-    def get_structure():
+    def get_structure() -> dict:
         return {
             "name": "🏠 Home",
             "type": "directory",
@@ -170,3 +170,19 @@ class DirectoryStructure:
                 }
             ]
         }
+
+    def does_exist(self, dir_name):
+        self.find_directory_name(dir_name, [], self.get_structure())
+
+    def find_directory_name(self, lookup: str, hierarchy: list[str], curr_structure: dict):
+        hierarchy.append(curr_structure.get("name"))
+        dir_subdirectories = curr_structure.get("subdirectories")
+
+        for subdir in dir_subdirectories:
+            if subdir.get("name") == lookup:
+                return hierarchy
+
+            if subdir.get("subdirectories") is not None:
+                self.find_directory_name(lookup, hierarchy, subdir)
+
+        return None
