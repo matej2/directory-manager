@@ -2,35 +2,35 @@ class DirectoryStructure:
     @staticmethod
     def get_structure() -> dict:
         return {
-            "name": "🏠 Home",
+            "name": "Home",
             "type": "directory",
             "description": "Root directory for personal files",
             "subdirectories": [
                 {
-                    "name": "📂 Documents",
+                    "name": "Documents",
                     "type": "directory",
                     "description": "Text files and documents",
                     "subdirectories": [
                         {
-                            "name": "👤 Personal",
+                            "name": "Personal",
                             "type": "directory",
                             "description": "IDs, contracts, personal records",
                             "subdirectories": []
                         },
                         {
-                            "name": "💼 Work",
+                            "name": "Work",
                             "type": "directory",
                             "description": "Resumes, work-related documents",
                             "subdirectories": []
                         },
                         {
-                            "name": "📚 Studies",
+                            "name": "Studies",
                             "type": "directory",
                             "description": "Courses, textbooks, research",
                             "subdirectories": []
                         },
                         {
-                            "name": "💰 Financial",
+                            "name": "Financial",
                             "type": "directory",
                             "description": "Taxes, invoices, receipts",
                             "subdirectories": []
@@ -38,29 +38,29 @@ class DirectoryStructure:
                     ]
                 },
                 {
-                    "name": "🎬 Media",
+                    "name": "Media",
                     "type": "directory",
                     "description": "All media files",
                     "subdirectories": [
                         {
-                            "name": "📷 Photos",
+                            "name": "Photos",
                             "type": "directory",
                             "description": "Personal photos",
                             "subdirectories": [
                                 {
-                                    "name": "👨‍👩‍👧‍👦 Family",
+                                    "name": "Family",
                                     "type": "directory",
                                     "description": "Family photos",
                                     "subdirectories": []
                                 },
                                 {
-                                    "name": "✈️ Travel",
+                                    "name": "️Travel",
                                     "type": "directory",
                                     "description": "Travel photos",
                                     "subdirectories": []
                                 },
                                 {
-                                    "name": "🎉 Events",
+                                    "name": "Events",
                                     "type": "directory",
                                     "description": "Special occasions",
                                     "subdirectories": []
@@ -68,24 +68,24 @@ class DirectoryStructure:
                             ]
                         },
                         {
-                            "name": "🎥 Videos",
+                            "name": "Videos",
                             "type": "directory",
                             "description": "Personal videos",
                             "subdirectories": [
                                 {
-                                    "name": "🏠 Home Videos",
+                                    "name": "Home Videos",
                                     "type": "directory",
                                     "description": "Family videos",
                                     "subdirectories": []
                                 },
                                 {
-                                    "name": "🎬 Movies",
+                                    "name": "Movies",
                                     "type": "directory",
                                     "description": "Downloaded movies",
                                     "subdirectories": []
                                 },
                                 {
-                                    "name": "📺 TV Shows",
+                                    "name": "TV Shows",
                                     "type": "directory",
                                     "description": "TV series episodes",
                                     "subdirectories": []
@@ -93,7 +93,7 @@ class DirectoryStructure:
                             ]
                         },
                         {
-                            "name": "🎵 Music",
+                            "name": "Music",
                             "type": "directory",
                             "description": "Audio files",
                             "subdirectories": []
@@ -101,24 +101,24 @@ class DirectoryStructure:
                     ]
                 },
                 {
-                    "name": "🛠 Projects",
+                    "name": "Projects",
                     "type": "directory",
                     "description": "Personal projects and hobbies",
                     "subdirectories": [
                         {
-                            "name": "💻 Coding",
+                            "name": "Coding",
                             "type": "directory",
                             "description": "Programming projects",
                             "subdirectories": []
                         },
                         {
-                            "name": "🔨 DIY",
+                            "name": "DIY",
                             "type": "directory",
                             "description": "Home improvement projects",
                             "subdirectories": []
                         },
                         {
-                            "name": "🎨 Art",
+                            "name": "Art",
                             "type": "directory",
                             "description": "Creative works",
                             "subdirectories": []
@@ -126,24 +126,24 @@ class DirectoryStructure:
                     ]
                 },
                 {
-                    "name": "📥 Downloads",
+                    "name": "Downloads",
                     "type": "directory",
                     "description": "Temporary download storage",
                     "subdirectories": []
                 },
                 {
-                    "name": "💾 Backups",
+                    "name": "Backups",
                     "type": "directory",
                     "description": "System and file backups",
                     "subdirectories": [
                         {
-                            "name": "🖥 System",
+                            "name": "System",
                             "type": "directory",
                             "description": "OS and software backups",
                             "subdirectories": []
                         },
                         {
-                            "name": "☁️ Cloud Sync",
+                            "name": "️Cloud Sync",
                             "type": "directory",
                             "description": "Cloud storage mirror",
                             "subdirectories": []
@@ -151,19 +151,19 @@ class DirectoryStructure:
                     ]
                 },
                 {
-                    "name": "🤝 Shared",
+                    "name": "Shared",
                     "type": "directory",
                     "description": "Files to share with others",
                     "subdirectories": []
                 },
                 {
-                    "name": "📱 Applications",
+                    "name": "Applications",
                     "type": "directory",
                     "description": "Portable apps and software",
                     "subdirectories": []
                 },
                 {
-                    "name": "📑 README.txt",
+                    "name": "README.txt",
                     "type": "file",
                     "description": "Directory structure guide",
                     "subdirectories": []
@@ -172,17 +172,20 @@ class DirectoryStructure:
         }
 
     def does_exist(self, dir_name):
-        self.find_directory_name(dir_name, [], self.get_structure())
+        if len(self.find_directory_name(dir_name, [], self.get_structure())) > 0:
+            return True
+        else:
+            return False
 
     def find_directory_name(self, lookup: str, hierarchy: list[str], curr_structure: dict):
         hierarchy.append(curr_structure.get("name"))
         dir_subdirectories = curr_structure.get("subdirectories")
 
         for subdir in dir_subdirectories:
-            if subdir.get("name") == lookup:
+            if lookup in subdir.get("name"):
                 return hierarchy
 
             if subdir.get("subdirectories") is not None:
                 self.find_directory_name(lookup, hierarchy, subdir)
 
-        return None
+        return []

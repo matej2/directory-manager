@@ -19,6 +19,8 @@ class DirectoryManager:
     def check_directories(self):
         structure = self.structure.get_structure().get("subdirectories")
 
+        print(f"Directory structure analysis for {self.path}:")
+
         self.check_subdirectories(structure, 0)
 
     def create_directories(self):
@@ -56,7 +58,7 @@ class DirectoryManager:
                 dir_level += "│   "
                 i += 1
 
-            if self.structure.does_exist(dir_name):
+            if self.structure.does_exist(dir_name) is not None:
                 print(f'[+] {dir_level}├── {dir_name}:'.ljust(40) + dir_desc)
             else:
                 print(f'[-] {dir_level}├── {dir_name}:'.ljust(40) + dir_desc)
